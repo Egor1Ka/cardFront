@@ -8,7 +8,7 @@
         place and share decks whenever you want.
       </p>
       <div class="cta-row">
-        <router-link class="primary" to="/createCards">
+        <router-link class="primary" to="/createModule">
           Create your first card
         </router-link>
       </div>

@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class", '[data-theme="dark"]'],
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        "muted-foreground": "var(--muted-foreground)",
+      },
       keyframes: {
         slideDown: {
           from: { height: "0", opacity: "0" },

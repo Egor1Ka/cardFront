@@ -19,3 +19,9 @@
     font-weight: 400;
   }
 }
+
+@layer utilities {
+  .border {
+    border-color: var(--border);
+  }
+}

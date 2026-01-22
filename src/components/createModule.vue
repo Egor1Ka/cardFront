@@ -51,7 +51,7 @@ const { cards, addCard, deleteCard } = useCards();
 
 const { mutateAsync, error, isPending } = useMutation({
   mutationFn: (formData) =>
-    serverFetch("/container", {
+    serverFetch("/module", {
       method: "POST",
       body: formData,
     }),
@@ -79,9 +79,9 @@ const onSubmit = async () => {
     });
 
     const data = await mutateAsync(formData);
-    console.log("container created", data);
+    console.log("module created", data);
   } catch (error) {
-    console.error("failed to create container", error);
+    console.error("failed to create module", error);
   }
 };
 </script>

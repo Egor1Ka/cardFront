@@ -7,7 +7,7 @@
       as="input"
       :id="id"
       :type="type"
-      class="w-full p-1 border border-gray-300 rounded"
+      class="w-full p-1 rounded border border-[var(--border)] bg-[var(--color-surface)] text-[var(--color-text)] placeholder:text-muted-foreground"
       :placeholder="placeholder"
       :accept="accept"
       :value="modelValue"

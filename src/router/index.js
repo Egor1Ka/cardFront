@@ -1,39 +1,51 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import MainPage from '../pages/MainPage.vue';
-import CreateCards from '../pages/CreateCards.vue';
-import TestPage from '../pages/TestPage.vue';
-import LibraryPage from '../pages/LibraryPage.vue';
-import CardsPage from '../pages/CardsPage.vue';
+import { createRouter, createWebHistory } from "vue-router";
+import MainPage from "../pages/MainPage.vue";
+import CreateCards from "../pages/CreateCards.vue";
+import TestPage from "../pages/TestPage.vue";
+import LibraryPage from "../pages/LibraryPage.vue";
+import CardsPage from "../pages/CardsPage.vue";
+import ModulesPage from "../pages/module/index.vue";
+import ModulePage from "../pages/module/ModulePage.vue";
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     component: MainPage,
   },
   {
-    path: '/createCards',
-    name: 'createCards',
+    path: "/createModule",
+    name: "createModule",
     component: CreateCards,
   },
   {
-    path: '/test',
-    name: 'test',
+    path: "/test",
+    name: "test",
     component: TestPage,
   },
   {
-    path: '/library',
-    name: 'library',
+    path: "/library",
+    name: "library",
     component: LibraryPage,
   },
   {
-    path: '/cards',
-    name: 'cards',
+    path: "/cards",
+    name: "cards",
     component: CardsPage,
   },
   {
-    path: '/:pathMatch(.*)*',
-    redirect: '/',
+    path: "/module",
+    name: "modules",
+    component: ModulesPage,
+  },
+  {
+    path: "/module/:id",
+    name: "module",
+    component: ModulePage,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/",
   },
 ];
 

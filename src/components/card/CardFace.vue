@@ -19,7 +19,7 @@
     >
       <div class="text-center">
         <h3 class="font-bold">{{ props.text }}</h3>
-        <p class="text-sm">{{ props.description }}</p>
+        <p class="text-sm text-muted-foreground">{{ props.description }}</p>
       </div>
     </div>
   </div>
