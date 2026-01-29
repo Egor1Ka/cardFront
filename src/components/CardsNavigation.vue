@@ -1,10 +1,10 @@
 <template>
   <TabsRoot :value="activeTab" class="mb-2 w-fit">
-    <TabsList class="flex gap-2 rounded-full border p-1 px-3">
+    <TabsList class="flex gap-2 border p-1 px-3 rounded-full">
       <TabsTrigger v-for="tab in tabs" :key="tab.link" :value="tab.link">
         <router-link
-          class="p-2 flex items-center gap-2 justify-center"
-          :class="activeTab === tab.link ? activeTabClass : ''"
+          class="p-2 flex items-center gap-2 justify-center rounded-full"
+          :class="activeTab === tab.link ? activeTabClass : 'hover'"
           :to="tab.link"
         >
           <fa :icon="tab.icon" class="text-current" />

@@ -3,6 +3,30 @@
     <div class="hero">
       <p class="eyebrow">Personal card maker</p>
       <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+      <h1>Build and organize your study cards.</h1>
+
       <p class="lead">
         Create clean, focused cards for quick reviews. Keep everything in one
         place and share decks whenever you want.

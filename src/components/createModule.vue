@@ -20,8 +20,8 @@
       @delete="deleteCard(card.id)"
     />
 
-    <div class="flex justify-center">
-      <Button @click="addCard">
+    <div class="">
+      <Button class="mb-4" @click="addCard">
         <template #icon>
           <fa icon="plus" />
         </template>
@@ -32,7 +32,9 @@
     <div v-else-if="error" class="text-sm text-red-500">
       {{ error.message }}
     </div>
-    <Button type="submit">Submit</Button>
+    <Button class="w-full my-auto" type="submit"
+      ><span class="font-bold text-base">Submit</span></Button
+    >
   </form>
 </template>
 
@@ -44,10 +46,12 @@ import { ref } from "vue";
 import serverFetch from "@/api/server";
 import { useCards } from "@/composables/useCards";
 import { useMutation } from "@tanstack/vue-query";
+import { useAuth } from "@/composables/useAuth";
 
 const name = ref("");
 const description = ref("");
 const { cards, addCard, deleteCard } = useCards();
+const { user } = useAuth();
 
 const { mutateAsync, error, isPending } = useMutation({
   mutationFn: (formData) =>
@@ -61,8 +65,11 @@ const onSubmit = async () => {
   const payload = {
     name: name.value,
     description: description.value,
+    createdBy: user.value.id,
     cards: cards.value,
   };
+
+  console.log("payload", payload);
 
   try {
     const formData = new FormData();

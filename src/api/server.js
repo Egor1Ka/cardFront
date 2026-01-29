@@ -1,5 +1,14 @@
 const DEFAULT_TIMEOUT = 10000;
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:9000";
+const ACCESS_TOKEN_COOKIE = "accessToken";
+
+const getCookieValue = (name) => {
+  console.log("document.cookie ", document.cookie);
+  const cookies = document.cookie ? document.cookie.split("; ") : [];
+  const match = cookies.find((cookie) => cookie.startsWith(`${name}=`));
+  if (!match) return null;
+  return decodeURIComponent(match.split("=").slice(1).join("="));
+};
 
 const buildUrl = (path, queryParams = {}) => {
   const base = new URL(path, BACKEND_URL).toString();
@@ -11,6 +20,20 @@ const buildUrl = (path, queryParams = {}) => {
   return `${base}${separator}${queryString}`;
 };
 
+const refreshAccessToken = async () => {
+  const url = buildUrl("/auth/refresh");
+  const response = await fetch(url, {
+    method: "POST",
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    throw new Error("refresh failed");
+  }
+
+  return true;
+};
+
 const serverFetch = async (path, options = {}) => {
   const {
     method = "GET",
@@ -18,6 +41,8 @@ const serverFetch = async (path, options = {}) => {
     body,
     queryParams,
     timeout = DEFAULT_TIMEOUT,
+    credentials = "include",
+    skipRefresh = false,
   } = options;
 
   const url = buildUrl(path, queryParams);
@@ -44,6 +69,12 @@ const serverFetch = async (path, options = {}) => {
     ...headers,
   };
 
+  const accessToken = getCookieValue(ACCESS_TOKEN_COOKIE);
+
+  if (accessToken) {
+    requestHeaders.Authorization = `Bearer ${accessToken}`;
+  }
+
   try {
     const response = await fetch(url, {
       method,
@@ -51,17 +82,22 @@ const serverFetch = async (path, options = {}) => {
       ...(requestBody && {
         body: isFormData ? requestBody : JSON.stringify(requestBody),
       }),
+      credentials,
       signal: controller.signal,
     });
 
     clearTimeout(timerId);
 
     /// разбраться с ошибками
-    if (!response.ok) throw Error("!response.ok");
+    if (!response.ok) {
+      if (response.status === 401 && !skipRefresh) {
+        await refreshAccessToken();
+        return serverFetch(path, { ...options, skipRefresh: true });
+      }
+      throw Error("!response.ok");
+    }
 
     const { data, statusCode, status, ...rest } = await response.json();
-
-    console.log("data", data);
 
     if (status && status !== "success") throw Error(status !== "success");
 

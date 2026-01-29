@@ -9,9 +9,19 @@
 
 @layer base {
   html {
-    font-family: "Inconsolata", -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
-      "Helvetica Neue", monospace;
+    font-family:
+      "Inconsolata",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      monospace;
   }
 
   body {

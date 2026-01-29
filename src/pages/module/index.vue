@@ -7,6 +7,7 @@
       :name="module.name"
       :description="module.description"
       :id="module.id"
+      :created-by="module.createdBy"
     />
   </div>
 </template>

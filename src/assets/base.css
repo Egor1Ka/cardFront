@@ -1,7 +1,7 @@
 /* color palette */
 :root {
   --vt-c-white: #dfdedd;
-  --vt-c-white-soft: #fdd644;
+  --vt-c-white-soft: #ff902d;
   --vt-c-white-mute: #efefec;
 
   --vt-c-black: #000000;
@@ -35,6 +35,8 @@
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-black);
   --color-text-muted: var(--vt-c-text-light-2);
+
+  --bg-hover: #f1f1f1;
 }
 
 html[data-theme="light"] {
@@ -56,6 +58,8 @@ html[data-theme="dark"] {
   --color-heading: var(--vt-c-text-dark-1);
   --color-text: var(--vt-c-white);
   --color-text-muted: var(--vt-c-text-dark-2);
+
+  --bg-hover: #272727;
 }
 
 @layer base {
@@ -102,6 +106,10 @@ body {
 
 .background {
   background: var(--color-surface);
+}
+
+.hover:hover {
+  background: var(--bg-hover);
 }
 
 h1 {
