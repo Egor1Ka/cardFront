@@ -16,7 +16,12 @@
       {{ cardsError.message }}
     </div>
     <div v-else class="grid gap-3">
-      <RowCard v-for="card in cards || []" :key="card.id" :card="card" />
+      <RowCard
+        v-for="card in cards || []"
+        :key="card.id"
+        :card="card"
+        :module-id="id"
+      />
     </div>
   </div>
 </template>

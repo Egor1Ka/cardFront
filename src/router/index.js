@@ -8,6 +8,7 @@ import CardsPage from "../pages/CardsPage.vue";
 import ModulesPage from "../pages/module/index.vue";
 import ModulePage from "../pages/module/ModulePage.vue";
 import LoginPage from "../pages/LoginPage.vue";
+import { useAuth } from "@/composables/useAuth";
 
 const routes = [
   {
@@ -65,6 +66,20 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach(async (to) => {
+  const { getUser } = useAuth();
+  const currentUser = await getUser();
+
+  if (to.name === "login") {
+    if (currentUser) return { name: "home" };
+    return true;
+  }
+
+  if (!currentUser) return { name: "login" };
+
+  return true;
 });
 
 export default router;
