@@ -105,9 +105,8 @@
 </template>
 
 <script setup>
-import { useAuth } from "@/composables/useAuth";
 import { useSidebar } from "@/composables/useSidebar";
-import { ref } from "vue";
+import { inject, ref } from "vue";
 import { useRoute } from "vue-router";
 import UserAvatar from "@/components/UserAvatar.vue";
 import AppLogo from "@/components/AppLogo.vue";
@@ -119,7 +118,9 @@ import {
   DialogClose,
 } from "reka-ui";
 
-const { user, loading } = useAuth();
+const auth = inject("auth");
+const user = auth.user;
+const loading = auth.loading;
 
 const route = useRoute();
 const { sidebarOpen } = useSidebar();

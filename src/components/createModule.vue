@@ -42,16 +42,17 @@
 import CardFields from "@/components/card/CardFields.vue";
 import Input from "./ui/Input.vue";
 import Button from "@/components/ui/Button.vue";
-import { ref } from "vue";
+import { inject, ref } from "vue";
 import serverFetch from "@/api/server";
 import { useCards } from "@/composables/useCards";
 import { useMutation } from "@tanstack/vue-query";
-import { useAuth } from "@/composables/useAuth";
 
 const name = ref("");
 const description = ref("");
 const { cards, addCard, deleteCard } = useCards();
-const { user } = useAuth();
+
+const auth = inject("auth");
+const user = auth.user;
 
 const { mutateAsync, error, isPending } = useMutation({
   mutationFn: (formData) =>
